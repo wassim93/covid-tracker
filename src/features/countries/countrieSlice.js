@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { GetAllCountries } from "../../services/countrieService";
+import { COUNTRIES } from "../../constants";
+import { GetAllCountries } from "../../services/CountrieServices";
 
 const initialState = {
   countries: [],
 };
 
 export const countrieSlice = createSlice({
-  name: "countries",
+  name: COUNTRIES,
   initialState,
   extraReducers: {
     [GetAllCountries.pending]: (state, action) => {
