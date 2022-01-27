@@ -4,11 +4,17 @@ import { GetAllCountries } from "../../services/CountrieServices";
 
 const initialState = {
   countries: [],
+  selectedCountry: "Worldwide",
 };
 
 export const countrieSlice = createSlice({
   name: COUNTRIES,
   initialState,
+  reducers: {
+    setSelectedCountry: (state, action) => {
+      state.selectedCountry = action.payload;
+    },
+  },
   extraReducers: {
     [GetAllCountries.pending]: (state, action) => {
       console.log("pending");
@@ -22,6 +28,9 @@ export const countrieSlice = createSlice({
     },
   },
 });
+export const { setSelectedCountry } = countrieSlice.actions;
 
 export const selectCountries = (state) => state.countries.countries;
+export const getSelectedCountrie = (state) => state.countries.selectedCountry;
+
 export default countrieSlice.reducer;
