@@ -7,6 +7,9 @@ import {
   getSelectedCountrie,
   selectCountries,
 } from "./features/countries/countrieSlice";
+import Stats from "./components/stats/Stats";
+import Map from "./components/map/Map";
+import { Card, CardContent } from "@mui/material";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -18,7 +21,17 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header data={countriesList} selectedCountry={selectedCountry} />
+      <div className="app__left">
+        <Header data={countriesList} selectedCountry={selectedCountry} />
+        <Stats />
+        <Map />
+      </div>
+      <Card className="app__right">
+        <CardContent>
+          <h3>Live cases by country</h3>
+          <h3>worldwide new cases</h3>
+        </CardContent>
+      </Card>
     </div>
   );
 };
