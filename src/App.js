@@ -14,6 +14,8 @@ import {
 import Stats from "./components/stats/Stats";
 import Map from "./components/map/Map";
 import { Card, CardContent } from "@mui/material";
+import Table from "./components/table/Table";
+import { sortData } from "./utils/utils";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -34,6 +36,7 @@ const App = () => {
       <Card className="app__right">
         <CardContent>
           <h3>Live cases by country</h3>
+          <Table data={sortData(countriesList)} />
           <h3>worldwide new cases</h3>
         </CardContent>
       </Card>
