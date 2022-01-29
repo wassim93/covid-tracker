@@ -5,14 +5,24 @@ import Select from "@mui/material/Select";
 import "./header.css";
 import { useDispatch } from "react-redux";
 import { setSelectedCountry } from "../../features/countries/countrieSlice";
+import {
+  GetCountrieDetail,
+  GetWorldwideDetails,
+} from "../../services/CountrieServices";
+import { WORLDWIDE } from "../../constants";
 
 const Header = ({ data, selectedCountry }) => {
   const dispatch = useDispatch();
-
   const handleCountryChange = (e) => {
-    console.log(e.target.value);
-    dispatch(setSelectedCountry(e.target.value));
+    //console.log(e.target.value);
+    const countryCode = e.target.value;
+    dispatch(setSelectedCountry(countryCode));
+
+    countryCode === WORLDWIDE
+      ? dispatch(GetWorldwideDetails())
+      : dispatch(GetCountrieDetail(countryCode));
   };
+
   return (
     <div className="header">
       <h1>COVID-19 Tracker</h1>
@@ -22,7 +32,7 @@ const Header = ({ data, selectedCountry }) => {
           value={selectedCountry}
           onChange={handleCountryChange}
         >
-          <MenuItem value="Worldwide">Worldwide</MenuItem>
+          <MenuItem value={WORLDWIDE}>{WORLDWIDE}</MenuItem>
           {data.map((country) => (
             <MenuItem
               key={`${country.countryInfo._id}_${country.country}`}

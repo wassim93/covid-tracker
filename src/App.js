@@ -2,8 +2,12 @@ import React, { useEffect } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { GetAllCountries } from "./services/CountrieServices";
 import {
+  GetAllCountries,
+  GetWorldwideDetails,
+} from "./services/CountrieServices";
+import {
+  getDetails,
   getSelectedCountrie,
   selectCountries,
 } from "./features/countries/countrieSlice";
@@ -17,6 +21,7 @@ const App = () => {
   const selectedCountry = useSelector(getSelectedCountrie);
   useEffect(() => {
     dispatch(GetAllCountries());
+    dispatch(GetWorldwideDetails());
   }, []);
 
   return (
