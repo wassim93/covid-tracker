@@ -35,10 +35,10 @@ export const countrieSlice = createSlice({
     /* COUNTRIE STATS DETAILS */
 
     [GetCountrieDetail.pending]: (state, action) => {
-      console.log("pending detail");
+      // console.log("pending detail");
     },
     [GetCountrieDetail.fulfilled]: (state, action) => {
-      console.log("fullfilled detail");
+      //console.log("fullfilled detail");
       state.details = action.payload;
     },
     [GetCountrieDetail.rejected]: (state, action) => {
@@ -48,10 +48,10 @@ export const countrieSlice = createSlice({
     /* WORLDWIDE STATS DETAILS */
 
     [GetWorldwideDetails.pending]: (state, action) => {
-      console.log("pendin worldwide detail");
+      // console.log("pendin worldwide detail");
     },
     [GetWorldwideDetails.fulfilled]: (state, action) => {
-      console.log("fullfilled  worldwide detail");
+      // console.log("fullfilled  worldwide detail");
       state.details = action.payload;
     },
     [GetWorldwideDetails.rejected]: (state, action) => {
