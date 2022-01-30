@@ -16,6 +16,7 @@ import Map from "./components/map/Map";
 import { Card, CardContent } from "@mui/material";
 import Table from "./components/table/Table";
 import { sortData } from "./utils/utils";
+import LineGraph from "./components/graph/LineGraph";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const App = () => {
           <h3>Live cases by country</h3>
           <Table data={sortData(countriesList)} />
           <h3>worldwide new cases</h3>
+          <LineGraph />
         </CardContent>
       </Card>
     </div>
