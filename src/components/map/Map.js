@@ -10,7 +10,7 @@ import "./map.css";
 const Map = () => {
   const country = useSelector(getDetails);
   const countries = useSelector(selectCountries);
-  console.log(ShowDataOnMap(countries));
+  //console.log(ShowDataOnMap(countries));
 
   const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
 

@@ -1,0 +1,31 @@
+.infobox {
+  flex: 1;
+  background-color: aquamarine;
+}
+
+.infobox:not(:last-child) {
+  margin-right: 10px;
+}
+.infobox:first-child {
+  background-color: #86c6be87;
+}
+.infobox:nth-child(2) {
+  background-color: #a6c64c7a;
+}
+.infobox:last-child {
+  background-color: #ee000454;
+}
+
+.infobox__cases {
+  color: #cc1034;
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.infobox__total {
+  color: #6c757d;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  margin-top: 15px !important;
+}

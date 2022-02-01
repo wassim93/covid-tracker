@@ -1,3 +1,4 @@
+import numeral from "numeral";
 import { Circle, Popup } from "react-leaflet";
 
 const casesTypeColors = {
@@ -49,6 +50,10 @@ export const buildChartData = (data, casesType = "cases") => {
   }
   return chartData;
 };
+
+export const prettyPrintedStat = (stat) => {
+  return stat ? `+${numeral(stat).format("0.0a")}` : "+0";
+};
 //Draw circle on the map with interactive tooltip
 export const ShowDataOnMap = (data, casesType = "cases") => {
   return data.map((country) => (
@@ -61,7 +66,22 @@ export const ShowDataOnMap = (data, casesType = "cases") => {
       radius={Math.sqrt(country[casesType]) * 250}
     >
       <Popup>
-        <h1>im popup</h1>
+        <div className="info__container">
+          <div
+            className="info__flag"
+            style={{ backgroundImage: `url(${country.countryInfo.flag})` }}
+          ></div>
+          <div className="info__name">{country.country}</div>
+          <div className="info__cases">
+            Cases:{numeral(country.cases).format("0.0")}
+          </div>
+          <div className="info__recovered">
+            Recovered:{numeral(country.recovered).format("0.0")}
+          </div>
+          <div className="info__deaths">
+            Deaths:{numeral(country.deaths).format("0.0")}
+          </div>
+        </div>
       </Popup>
     </Circle>
   ));
