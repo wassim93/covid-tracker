@@ -7,7 +7,6 @@ import {
   GetWorldwideDetails,
 } from "./services/CountrieServices";
 import {
-  getDetails,
   getSelectedCountrie,
   selectCountries,
 } from "./features/countries/countrieSlice";
@@ -22,6 +21,7 @@ const App = () => {
   const dispatch = useDispatch();
   const countriesList = useSelector(selectCountries);
   const selectedCountry = useSelector(getSelectedCountrie);
+
   useEffect(() => {
     dispatch(GetAllCountries());
     dispatch(GetWorldwideDetails());
