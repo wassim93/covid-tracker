@@ -1,36 +1,55 @@
 import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { useSelector } from "react-redux";
-import { getDetails } from "../../features/countries/countrieSlice";
+import {
+  getDetails,
+  selectCountries,
+} from "../../features/countries/countrieSlice";
+import { ShowDataOnMap } from "../../utils/utils";
 import "./map.css";
 const Map = () => {
   const country = useSelector(getDetails);
+  const countries = useSelector(selectCountries);
+  console.log(ShowDataOnMap(countries));
 
-  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+  const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
 
   useEffect(() => {
     if (country.countryInfo !== undefined) {
       setMapCenter([country.countryInfo.lat, country.countryInfo.long]);
     } else {
-      setMapCenter({ lat: 34.80746, lng: -40.4796 });
+      setMapCenter({ lat: 0, lng: 0 });
     }
   }, [country]);
 
   function UpdateMapCentre(props) {
+    //ShowDataOnMap(countries);
+
     const map = useMap();
-    map.panTo(props.mapCentre);
-    country.countryInfo !== undefined ? map.setZoom(6) : map.setZoom(2);
+    map.setMinZoom(2);
+
+    if (country.countryInfo !== undefined) {
+      map.panTo(props.mapCentre);
+      map.setZoom(5);
+    } else {
+      map.setView([10, 18]);
+      map.setZoom(2);
+    }
+
     return null;
   }
 
   return (
     <div className="map">
-      <MapContainer zoomControl="false">
+      <MapContainer>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          noWrap="true"
         />
-        <UpdateMapCentre mapCentre={mapCenter} />
+
+        <UpdateMapCentre mapCentre={mapCenter}></UpdateMapCentre>
+        {ShowDataOnMap(countries)}
       </MapContainer>
     </div>
   );
