@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { useSelector } from "react-redux";
 import {
+  getCaseType,
   getDetails,
   selectCountries,
 } from "../../features/countries/countrieSlice";
@@ -10,9 +11,14 @@ import "./map.css";
 const Map = () => {
   const country = useSelector(getDetails);
   const countries = useSelector(selectCountries);
+  const caseType = useSelector(getCaseType);
+  //console.log(caseType);
+
   //console.log(ShowDataOnMap(countries));
 
   const [mapCenter, setMapCenter] = useState([0, 0]);
+  const circleRefs = useRef();
+  //console.log(circleRefs);
 
   useEffect(() => {
     if (country.countryInfo !== undefined) {
@@ -50,8 +56,8 @@ const Map = () => {
 
         <UpdateMapCentre mapCentre={mapCenter} />
         {country.countryInfo === undefined
-          ? ShowDataOnMap(countries)
-          : ShowSingleCountryDataOnMap(country)}
+          ? ShowDataOnMap(countries, caseType, circleRefs)
+          : ShowSingleCountryDataOnMap(country, caseType, circleRefs)}
       </MapContainer>
     </div>
   );

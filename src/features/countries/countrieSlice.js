@@ -10,6 +10,7 @@ const initialState = {
   countries: [],
   selectedCountry: WORLDWIDE,
   details: {},
+  caseType: "cases",
 };
 
 export const countrieSlice = createSlice({
@@ -18,6 +19,9 @@ export const countrieSlice = createSlice({
   reducers: {
     setSelectedCountry: (state, action) => {
       state.selectedCountry = action.payload;
+    },
+    setCaseType: (state, action) => {
+      state.caseType = action.payload;
     },
   },
   extraReducers: {
@@ -59,10 +63,12 @@ export const countrieSlice = createSlice({
     },
   },
 });
-export const { setSelectedCountry } = countrieSlice.actions;
+export const { setSelectedCountry, setCaseType } = countrieSlice.actions;
 
 export const selectCountries = (state) => state.countries.countries;
 export const getSelectedCountrie = (state) => state.countries.selectedCountry;
+export const getCaseType = (state) => state.countries.caseType;
+
 export const getDetails = (state) => state.countries.details;
 
 export default countrieSlice.reducer;

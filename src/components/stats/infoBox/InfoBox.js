@@ -1,11 +1,17 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setCaseType } from "../../../features/countries/countrieSlice";
 import { prettyPrintedStat } from "../../../utils/utils";
 import "./infobox.css";
 
-const InfoBox = ({ title, caseNumber, total }) => {
+const InfoBox = ({ title, caseNumber, total, caseType }) => {
+  const dispatch = useDispatch();
+  const handleCardClick = () => {
+    dispatch(setCaseType(caseType));
+  };
   return (
-    <Card className="infobox">
+    <Card className="infobox" onClick={handleCardClick}>
       <CardContent>
         <Typography color="textSecondary" className="infobox__title">
           {title}
