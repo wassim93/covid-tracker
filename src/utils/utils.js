@@ -86,3 +86,37 @@ export const ShowDataOnMap = (data, casesType = "cases") => {
     </Circle>
   ));
 };
+
+//Draw circle on the map with interactive tooltip
+export const ShowSingleCountryDataOnMap = (data, casesType = "cases") => {
+  return (
+    <Circle
+      center={[data.countryInfo.lat, data.countryInfo.long]}
+      fillOpacity={0.4}
+      color={casesTypeColors[casesType].hex}
+      fillColor={casesTypeColors[casesType].hex}
+      radius={
+        Math.sqrt(data[casesType]) * casesTypeColors[casesType].multiplier
+      }
+    >
+      <Popup>
+        <div className="info__container">
+          <div
+            className="info__flag"
+            style={{ backgroundImage: `url(${data.countryInfo.flag})` }}
+          ></div>
+          <div className="info__name">{data.country}</div>
+          <div className="info__cases">
+            Cases:{numeral(data.cases).format("0.0")}
+          </div>
+          <div className="info__recovered">
+            Recovered:{numeral(data.recovered).format("0.0")}
+          </div>
+          <div className="info__deaths">
+            Deaths:{numeral(data.deaths).format("0.0")}
+          </div>
+        </div>
+      </Popup>
+    </Circle>
+  );
+};

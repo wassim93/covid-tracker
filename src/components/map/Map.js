@@ -5,7 +5,7 @@ import {
   getDetails,
   selectCountries,
 } from "../../features/countries/countrieSlice";
-import { ShowDataOnMap } from "../../utils/utils";
+import { ShowDataOnMap, ShowSingleCountryDataOnMap } from "../../utils/utils";
 import "./map.css";
 const Map = () => {
   const country = useSelector(getDetails);
@@ -49,7 +49,9 @@ const Map = () => {
         />
 
         <UpdateMapCentre mapCentre={mapCenter}></UpdateMapCentre>
-        {ShowDataOnMap(countries)}
+        {country.countryInfo === undefined
+          ? ShowDataOnMap(countries)
+          : ShowSingleCountryDataOnMap(country)}
       </MapContainer>
     </div>
   );
