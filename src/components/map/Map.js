@@ -2,16 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { useSelector } from "react-redux";
 import {
-  getCaseType,
   getDetails,
   selectCountries,
 } from "../../features/countries/countrieSlice";
 import { ShowDataOnMap, ShowSingleCountryDataOnMap } from "../../utils/utils";
 import "./map.css";
-const Map = () => {
+const Map = ({ caseType }) => {
   const country = useSelector(getDetails);
   const countries = useSelector(selectCountries);
-  const caseType = useSelector(getCaseType);
   //console.log(caseType);
 
   //console.log(ShowDataOnMap(countries));

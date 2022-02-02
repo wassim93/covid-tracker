@@ -7,6 +7,7 @@ import {
   GetWorldwideDetails,
 } from "./services/CountrieServices";
 import {
+  getCaseType,
   getSelectedCountrie,
   selectCountries,
 } from "./features/countries/countrieSlice";
@@ -21,6 +22,7 @@ const App = () => {
   const dispatch = useDispatch();
   const countriesList = useSelector(selectCountries);
   const selectedCountry = useSelector(getSelectedCountrie);
+  const caseType = useSelector(getCaseType);
 
   useEffect(() => {
     dispatch(GetAllCountries());
@@ -32,14 +34,14 @@ const App = () => {
       <div className="app__left">
         <Header data={countriesList} selectedCountry={selectedCountry} />
         <Stats />
-        <Map />
+        <Map caseType={caseType} />
       </div>
       <Card className="app__right">
         <CardContent>
           <h3>Live cases by country</h3>
           <Table data={sortData(countriesList)} />
-          <h3>worldwide new cases</h3>
-          <LineGraph />
+          <h3>worldwide new {caseType}</h3>
+          <LineGraph caseType={caseType} />
         </CardContent>
       </Card>
     </div>

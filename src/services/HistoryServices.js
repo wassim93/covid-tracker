@@ -6,6 +6,6 @@ export const GetWorldwideHistoryData = createAsyncThunk(
   GET_WORLDWIDE_HISTORY_DATA,
   async () =>
     await (
-      await instance.get("/v3/covid-19/historical/all?lastdays=120")
+      await instance.get("/v3/covid-19/historical/all?lastdays=200")
     ).data
 );

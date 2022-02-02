@@ -71,14 +71,15 @@ const options = {
   },
 };
 
-const LineGraph = () => {
+const LineGraph = ({ caseType }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(GetWorldwideHistoryData());
   }, []);
 
   const data = useSelector(getData);
-  const chartData = buildChartData(data);
+  console.log(data[caseType]);
+  const chartData = buildChartData(data, caseType);
 
   return (
     <div className="lineGraph">
@@ -87,7 +88,7 @@ const LineGraph = () => {
           data={{
             datasets: [
               {
-                label: "Cases",
+                label: `${caseType}`,
                 backgroundColor: "rgba(204, 16, 52, 0.5)",
                 borderColor: "#CC1034",
                 data: chartData,
