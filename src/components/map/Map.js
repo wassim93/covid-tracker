@@ -12,13 +12,13 @@ const Map = () => {
   const countries = useSelector(selectCountries);
   //console.log(ShowDataOnMap(countries));
 
-  const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
+  const [mapCenter, setMapCenter] = useState([0, 0]);
 
   useEffect(() => {
     if (country.countryInfo !== undefined) {
       setMapCenter([country.countryInfo.lat, country.countryInfo.long]);
     } else {
-      setMapCenter({ lat: 0, lng: 0 });
+      setMapCenter([0, 0]);
     }
   }, [country]);
 
@@ -29,11 +29,11 @@ const Map = () => {
     map.setMinZoom(2);
 
     if (country.countryInfo !== undefined) {
-      map.panTo(props.mapCentre);
-      map.setZoom(5);
+      map.setView(props.mapCentre, 4);
+      // map.setZoom(4);
     } else {
-      map.setView([10, 18]);
-      map.setZoom(2);
+      map.setView([10, 18], 2);
+      // map.setZoom(2);
     }
 
     return null;
@@ -48,7 +48,7 @@ const Map = () => {
           noWrap="true"
         />
 
-        <UpdateMapCentre mapCentre={mapCenter}></UpdateMapCentre>
+        <UpdateMapCentre mapCentre={mapCenter} />
         {country.countryInfo === undefined
           ? ShowDataOnMap(countries)
           : ShowSingleCountryDataOnMap(country)}
