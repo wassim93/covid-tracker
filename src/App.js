@@ -40,7 +40,7 @@ const App = () => {
         <CardContent>
           <h3>Live cases by country</h3>
           <Table data={sortData(countriesList)} />
-          <h3>worldwide new {caseType}</h3>
+          <h3>Worldwide new {caseType} (Last 200 days)</h3>
           <LineGraph caseType={caseType} />
         </CardContent>
       </Card>

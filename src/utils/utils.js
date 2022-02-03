@@ -35,7 +35,7 @@ export const sortData = (data) => {
   return sortedData;
 };
 
-export const buildChartData = (data, casesType = "cases") => {
+export const buildChartData = (data, casesType) => {
   const chartData = [];
   let lastDataPoint;
   for (let date in data.cases) {
@@ -55,18 +55,16 @@ export const prettyPrintedStat = (stat) => {
   return stat ? `+${numeral(stat).format("0.0a")}` : "+0";
 };
 //Draw circle on the map with interactive tooltip
-export const ShowDataOnMap = (data, casesType = "cases", reference) => {
-  console.log(reference);
-  console.log(casesTypeColors[casesType].hex);
-
+export const ShowDataOnMap = (data, casesType) => {
   return data.map((country) => (
     <Circle
       key={`${country.countryInfo._id}_${country.country}`}
       center={[country.countryInfo.lat, country.countryInfo.long]}
       fillOpacity={0.4}
-      color={casesTypeColors[casesType].hex}
-      ref={reference.current}
-      fillColor={casesTypeColors[casesType].hex}
+      pathOptions={{
+        color: casesTypeColors[casesType].hex,
+        fillColor: casesTypeColors[casesType].hex,
+      }}
       radius={Math.sqrt(country[casesType]) * 250}
     >
       <Popup>
@@ -92,13 +90,15 @@ export const ShowDataOnMap = (data, casesType = "cases", reference) => {
 };
 
 //Draw circle on the map with interactive tooltip
-export const ShowSingleCountryDataOnMap = (data, casesType = "cases", ref) => {
+export const ShowSingleCountryDataOnMap = (data, casesType) => {
   return (
     <Circle
       center={[data.countryInfo.lat, data.countryInfo.long]}
       fillOpacity={0.4}
-      color={casesTypeColors[casesType].hex}
-      fillColor={casesTypeColors[casesType].hex}
+      pathOptions={{
+        color: casesTypeColors[casesType].hex,
+        fillColor: casesTypeColors[casesType].hex,
+      }}
       radius={Math.sqrt(data[casesType]) * 250}
     >
       <Popup>

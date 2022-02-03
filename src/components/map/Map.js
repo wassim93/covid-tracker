@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { useSelector } from "react-redux";
 import {
@@ -10,13 +10,8 @@ import "./map.css";
 const Map = ({ caseType }) => {
   const country = useSelector(getDetails);
   const countries = useSelector(selectCountries);
-  //console.log(caseType);
-
-  //console.log(ShowDataOnMap(countries));
 
   const [mapCenter, setMapCenter] = useState([0, 0]);
-  const circleRefs = useRef();
-  //console.log(circleRefs);
 
   useEffect(() => {
     if (country.countryInfo !== undefined) {
@@ -27,13 +22,11 @@ const Map = ({ caseType }) => {
   }, [country]);
 
   function UpdateMapCentre(props) {
-    //ShowDataOnMap(countries);
-
     const map = useMap();
     map.setMinZoom(2);
 
     if (country.countryInfo !== undefined) {
-      map.setView(props.mapCentre, 4);
+      map.setView(props.mapCentre, 5);
       // map.setZoom(4);
     } else {
       map.setView([10, 18], 2);
@@ -49,13 +42,12 @@ const Map = ({ caseType }) => {
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          noWrap="true"
         />
 
         <UpdateMapCentre mapCentre={mapCenter} />
         {country.countryInfo === undefined
-          ? ShowDataOnMap(countries, caseType, circleRefs)
-          : ShowSingleCountryDataOnMap(country, caseType, circleRefs)}
+          ? ShowDataOnMap(countries, caseType)
+          : ShowSingleCountryDataOnMap(country, caseType)}
       </MapContainer>
     </div>
   );

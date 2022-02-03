@@ -78,7 +78,7 @@ const LineGraph = ({ caseType }) => {
   }, []);
 
   const data = useSelector(getData);
-  console.log(data[caseType]);
+  //console.log(data[caseType]);
   const chartData = buildChartData(data, caseType);
 
   return (
