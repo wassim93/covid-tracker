@@ -5,17 +5,19 @@
 - React leaflet
 - React chart
 
+- API USED : https://disease.sh/
+
 <h4>Homepage</h4>
 
-![Screenshot (158)](https://github.com/wassim93/disney-clone/blob/master/Screenshot/home.png)
+![Screenshot (158)](https://github.com/wassim93/covid-tracker/blob/master/src/Screenshots/homepage.png)
 
 <h4>Recovered Cases Selected</h4>
 
-![Screenshot (159)](https://github.com/wassim93/disney-clone/blob/master/Screenshot/login.png)
+![Screenshot (159)](https://github.com/wassim93/covid-tracker/blob/master/src/Screenshots/recovered%20worldwide.png)
 
 <h4>Country Selected</h4>
 
-![Screenshot (159)](https://github.com/wassim93/disney-clone/blob/master/Screenshot/login.png)
+![Screenshot (159)](https://github.com/wassim93/covid-tracker/blob/master/src/Screenshots/country%20selected.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
