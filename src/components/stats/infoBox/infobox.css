@@ -7,7 +7,7 @@
 .infobox:not(:last-child) {
   margin-right: 10px;
 }
-.infobox:first-child {
+/*.infobox:first-child {
   background-color: #86c6be87;
 }
 .infobox:nth-child(2) {
@@ -15,7 +15,7 @@
 }
 .infobox:last-child {
   background-color: #ee000454;
-}
+}*/
 
 .infobox__cases {
   color: #cc1034;
