@@ -1,3 +1,22 @@
+🔴Covid 19 Tracker - ReactJS
+
+- React Js
+- Redux toolkit
+- React leaflet
+- React chart
+
+<h4>Homepage</h4>
+
+![Screenshot (158)](https://github.com/wassim93/disney-clone/blob/master/Screenshot/home.png)
+
+<h4>Recovered Cases Selected</h4>
+
+![Screenshot (159)](https://github.com/wassim93/disney-clone/blob/master/Screenshot/login.png)
+
+<h4>Country Selected</h4>
+
+![Screenshot (159)](https://github.com/wassim93/disney-clone/blob/master/Screenshot/login.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
